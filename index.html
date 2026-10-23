@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Join Better Casual MC. Minecraft Java 26.2, with relaxed progression and no modpack installation.">
+<meta name="theme-color" content="#18231d">
+<title>Better Casual MC | Join</title>
+<style>
+:root{color-scheme:dark;--bg:#101813;--panel:#19251d;--text:#f1f1e9;--muted:#b1bcb0;--accent:#c3e990;--line:#344538}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:760px;margin:0 auto;padding:56px 24px 32px}header{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding-bottom:22px}.brand{font-weight:750;letter-spacing:-.4px}.version{font-size:13px;color:var(--muted)}h1{font-size:clamp(40px,8vw,66px);line-height:1.07;letter-spacing:-2.5px;margin:46px 0 16px}p{margin:0 0 20px;color:var(--muted)}.join{padding:28px;background:var(--panel);border:1px solid var(--line);border-radius:16px;margin:30px 0}.label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:1.6px;color:var(--muted);margin-bottom:8px}.address-row{display:flex;align-items:center;gap:12px;justify-content:space-between}input{border:0;background:transparent;color:var(--text);font:600 clamp(16px,3.3vw,24px)/1.5 ui-monospace,monospace;width:100%;min-width:0;padding:6px 0}button,.start{border:1px solid var(--line);border-radius:8px;font:650 15px/1.4 inherit;cursor:pointer}button{padding:11px 16px;color:var(--text);background:#26382c;font-family:inherit;font-weight:650;font-size:14px;white-space:nowrap}.start{display:flex;justify-content:center;align-items:center;gap:12px;background:var(--accent);color:#152015;text-decoration:none;padding:17px 20px;margin-top:24px;font-weight:750;font-size:18px}.start:hover{background:#d6f6ad}button:hover{background:#354b3a}.hint{font-size:13px;margin:12px 0 0;text-align:center}.notice{font-size:13px;color:var(--accent);min-height:22px;margin:4px 0 0}.steps{padding:0;list-style:none;counter-reset:step;margin:30px 0 36px}.steps li{counter-increment:step;display:flex;align-items:baseline;gap:14px;margin:14px 0;color:var(--muted)}.steps li:before{content:counter(step);font:600 12px/24px ui-monospace,monospace;text-align:center;flex:0 0 25px;border:1px solid var(--line);border-radius:50%;color:var(--accent)}strong{color:var(--text);font-weight:650}details{border-top:1px solid var(--line);padding:18px 0}summary{cursor:pointer;font-weight:600}details p{margin:14px 0 0;font-size:14px}details a{color:var(--accent)}footer{margin-top:22px;font-size:12px;color:var(--muted)}:focus-visible{outline:3px solid var(--accent);outline-offset:5px}@media(max-width:480px){main{padding:28px 18px}header{align-items:start}.version{text-align:right}h1{margin-top:36px}.join{padding:20px 16px}.address-row{flex-wrap:wrap}input{flex-basis:100%}.address-row button{width:100%}}
+</style>
+</head>
+<body>
+<main>
+<header><span class="brand">Better Casual MC</span><span class="version">Java Edition · 26.2</span></header>
+<h1>Start the server.<br>Join the town.</h1>
+<p>Minecraft with more to discover and less grinding.</p>
+<section class="join" aria-label="Connect to the server">
+<label class="label" for="address">Server address</label>
+<div class="address-row"><input id="address" value="bettercasualmc.falix.gg" readonly aria-label="Minecraft server address" spellcheck="false"><button id="copy" type="button">Copy address</button></div>
+<div class="notice" id="notice" role="status" aria-live="polite"></div>
+<a class="start" href="https://falixnodes.net/startserver?ip=bettercasualmc.falix.gg" target="_blank" rel="noopener noreferrer">Start server <span aria-hidden="true">↗</span></a>
+<p class="hint">Opens Falix in a new tab. Press Start there, then wait for it to finish.</p>
+</section>
+<ol class="steps">
+<li><span>Open <strong>Minecraft Java 26.2</strong>.</span></li>
+<li><span>Go to <strong>Multiplayer → Add Server</strong> and paste the address.</span></li>
+<li><span>Join and <strong>accept the server resource pack</strong>.</span></li>
+</ol>
+<details><summary>Do I need to install anything?</summary><p>Use Minecraft Java 26.2 on a computer. No modpack or mod loader is required. Accept the resource-pack download when you join.</p></details>
+<details><summary>Server still offline?</summary><p>Keep the Falix start tab open. You may need to complete a CAPTCHA or wait in a queue. Once startup finishes, refresh your Minecraft server list and try again. Already online? Join directly.</p></details>
+<details><summary>What's different?</summary><p>We use <a href="https://modrinth.com/datapack/matcha-flavoured" target="_blank" rel="noopener noreferrer">Matcha Flavoured</a> for more casual progression. Build a home, explore, and work on the town at your own pace.</p></details>
+<footer>Java on PC, Mac, or Linux.</footer>
+</main>
+<script>
+const button=document.getElementById('copy');
+const address=document.getElementById('address');
+const notice=document.getElementById('notice');
+button.addEventListener('click',async()=>{
+ try{await navigator.clipboard.writeText(address.value);notice.textContent='Address copied.';button.textContent='Copied!';setTimeout(()=>{button.textContent='Copy address';},2000);}
+ catch{address.focus();address.select();notice.textContent='Address selected. Press Ctrl+C or ⌘C to copy.';}
+});
+</script>
+</body>
+</html>
